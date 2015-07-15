@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.database1DataSet1 = new PatsClothesShop.Database1DataSet();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.customerTableAdapter1 = new PatsClothesShop.Database1DataSetTableAdapters.CustomerTableAdapter();
-            this.database1DataSet1 = new PatsClothesShop.Database1DataSet();
             this.tableAdapterManager1 = new PatsClothesShop.Database1DataSetTableAdapters.TableAdapterManager();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -50,18 +53,23 @@
             // 
             // listBox1
             // 
-            this.listBox1.DataSource = this.database1DataSet1;
-            this.listBox1.DisplayMember = "Customer.SecondName";
+            this.listBox1.DataSource = this.bindingSource1;
+            this.listBox1.DisplayMember = "SecondName";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(16, 52);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 95);
             this.listBox1.TabIndex = 1;
-            this.listBox1.ValueMember = "Customer.CustomerID";
+            this.listBox1.ValueMember = "CustomerID";
+            // 
+            // database1DataSet1
+            // 
+            this.database1DataSet1.DataSetName = "Database1DataSet";
+            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox1
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.database1DataSet1, "Customer.FirstName", true));
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "FirstName", true));
             this.textBox1.Location = new System.Drawing.Point(160, 52);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -69,7 +77,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.database1DataSet1, "Customer.SecondName", true));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "SecondName", true));
             this.textBox2.Location = new System.Drawing.Point(160, 94);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
@@ -81,23 +89,24 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
+            this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // customerTableAdapter1
             // 
             this.customerTableAdapter1.ClearBeforeFill = true;
-            // 
-            // database1DataSet1
-            // 
-            this.database1DataSet1.DataSetName = "Database1DataSet";
-            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.CustomerTableAdapter = this.customerTableAdapter1;
             this.tableAdapterManager1.UpdateOrder = PatsClothesShop.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "Customer";
+            this.bindingSource1.DataSource = this.database1DataSet1;
             // 
             // Form2
             // 
@@ -113,6 +122,7 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +138,6 @@
         private Database1DataSetTableAdapters.CustomerTableAdapter customerTableAdapter1;
         private Database1DataSet database1DataSet1;
         private Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

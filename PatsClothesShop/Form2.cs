@@ -21,5 +21,13 @@ namespace PatsClothesShop
         {
             customerTableAdapter1.Fill(database1DataSet1.Customer);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bindingSource1.EndEdit();
+            int result = 0;
+            result = customerTableAdapter1.Update(database1DataSet1.Customer);
+            MessageBox.Show("Row " + result + " Updated");
+        }
     }
 }
